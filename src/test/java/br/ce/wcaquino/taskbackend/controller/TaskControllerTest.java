@@ -1,6 +1,8 @@
 package br.ce.wcaquino.taskbackend.controller;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,13 +17,13 @@ import br.ce.wcaquino.taskbackend.repo.TaskRepo;
 import br.ce.wcaquino.taskbackend.utils.ValidationException;
 
 public class TaskControllerTest {
-	
+
 	@Mock
 	private TaskRepo taskRepo;
-	
+
 	@InjectMocks
 	private TaskController controller;
-	
+
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
@@ -72,6 +74,16 @@ public class TaskControllerTest {
 		todo.setDueDate(LocalDate.now());
 		controller.save(todo);
 		Mockito.verify(taskRepo).save(todo);
+	}
 
+	@Test
+	public void testFindAll() {
+
+		List<Task> mockTasks = Arrays.asList(new Task(), new Task());
+		Mockito.when(taskRepo.findAll()).thenReturn(mockTasks);
+
+		taskRepo.findAll();
+
+		Mockito.verify(taskRepo, Mockito.times(1)).findAll();
 	}
 }
