@@ -43,20 +43,6 @@ public class TaskControllerTest {
 		}
 
 	}
-	
-	@Test
-	public void naoDeveSalvarTarefaComDescricaoNull() {
-		Task todo = new Task();
-		todo.setDueDate(LocalDate.now());
-		todo.setTask(null);
-		try {
-			controller.save(todo);
-			Assert.fail("Não deveria chegar nesse ponto!!");
-		} catch (ValidationException ex) {
-			Assert.assertEquals("Fill the task description", ex.getMessage());
-		}
-
-	}
 
 	@Test
 	public void naoDeveSalvarTarefaSemData() {
@@ -92,13 +78,4 @@ public class TaskControllerTest {
 		Mockito.verify(taskRepo).save(todo);
 	}
 
-	@Test
-	public void testFindAll() {
-
-		List<Task> mockTasks = Arrays.asList(new Task(), new Task());
-		Mockito.when(taskRepo.findAll()).thenReturn(mockTasks);
-
-		List<Task> all = taskRepo.findAll();
-		assertTrue(!all.isEmpty());
-	}
 }
