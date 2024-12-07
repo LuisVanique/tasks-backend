@@ -43,6 +43,20 @@ public class TaskControllerTest {
 		}
 
 	}
+	
+	@Test
+	public void naoDeveSalvarTarefaComDescricaoNull() {
+		Task todo = new Task();
+		todo.setDueDate(LocalDate.now());
+		todo.setTask(null);
+		try {
+			controller.save(todo);
+			Assert.fail("Não deveria chegar nesse ponto!!");
+		} catch (ValidationException ex) {
+			Assert.assertEquals("Fill the task description", ex.getMessage());
+		}
+
+	}
 
 	@Test
 	public void naoDeveSalvarTarefaSemData() {
