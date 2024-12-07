@@ -1,5 +1,7 @@
 package br.ce.wcaquino.taskbackend.controller;
 
+import static org.junit.Assert.assertTrue;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -82,8 +84,7 @@ public class TaskControllerTest {
 		List<Task> mockTasks = Arrays.asList(new Task(), new Task());
 		Mockito.when(taskRepo.findAll()).thenReturn(mockTasks);
 
-		taskRepo.findAll();
-
-		Mockito.verify(taskRepo, Mockito.times(1)).findAll();
+		List<Task> all = taskRepo.findAll();
+		assertTrue(!all.isEmpty());
 	}
 }
