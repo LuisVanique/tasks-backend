@@ -1,10 +1,6 @@
 package br.ce.wcaquino.taskbackend.controller;
 
-import static org.junit.Assert.assertTrue;
-
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -26,10 +22,13 @@ public class TaskControllerTest {
 	@InjectMocks
 	private TaskController controller;
 
+
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 	}
+	
+	
 
 	@Test
 	public void naoDeveSalvarTarefaSemDescricao() {
