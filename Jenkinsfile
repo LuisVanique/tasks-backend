@@ -2,7 +2,10 @@ pipeline{
     agent any
     stages{
         stage('Just test'){
-            bat 'echo deu certo!'
+            steps{
+                bat 'echo deu certo!'
+            }
+            
         }
     }
 }
