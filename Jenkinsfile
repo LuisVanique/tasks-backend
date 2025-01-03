@@ -2,17 +2,15 @@ pipeline{
     agent any
     stages{
 
-        stage('Test') {
-        steps {
-            script {
-                emailext(
-                     subject: 'Test Email',
-                    body: 'This is a test email from Jenkins.',
-                    to: 'cunhagustavo142+jenkins@gmail.com'
-                )
-             }
+        stage('Test'){
+            steps{
+                script{
+                    emailext(subject: 'Test Email', 
+                    body: 'This is a test email from jenkins',
+                    to: 'cunhagustavo1422+jenkins@gmail.com')
+                }
+            }
         }
-
         stage('Build backend'){
             steps{
                 bat 'mvn clean package -DskipTests=true'
