@@ -7,7 +7,7 @@ pipeline{
                 script{
                     emailext(subject: 'Test Email', 
                     body: 'This is a test email from jenkins',
-                    to: 'cunhagustavo1422+jenkins@gmail.com')
+                    to: 'cunhagustavo142+jenkins@gmail.com')
                 }
             }
         }
